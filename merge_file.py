@@ -6,10 +6,16 @@ import os
 import re
 import pandas as pd
 
+file_type = {
+    'csv': ''
+}
+
+
+
 
 class MergeFile:
     all_list = list()
-    table_head = ['序号', '题名', '作者', '机构', '基金', '刊名', '年', '卷', '期', 'ISSN号', 'CN号', '页码', '关键词', '分类号', '文摘', '网址']
+    table_head = []
 
     def read_File(self, path):
         if os.path.isdir(path):
@@ -40,6 +46,10 @@ class MergeFile:
                     elif src_path.endswith('html'):
                         pf = pd.read_html(src_path, dtype=str, header=0)[0]
                         self.all_list.append(pf)
+
+    def ReadCsv(path):
+        pf = pd.read_csv(path, dtype=str)
+        return pf
 
     def Merge_File(self, path):
         self.read_File(path)
