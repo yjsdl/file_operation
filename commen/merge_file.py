@@ -6,12 +6,6 @@ import os
 import re
 import pandas as pd
 
-file_type = {
-    'csv': ''
-}
-
-
-
 
 class MergeFile:
     all_list = list()
@@ -46,10 +40,6 @@ class MergeFile:
                     elif src_path.endswith('html'):
                         pf = pd.read_html(src_path, dtype=str, header=0)[0]
                         self.all_list.append(pf)
-
-    def ReadCsv(path):
-        pf = pd.read_csv(path, dtype=str)
-        return pf
 
     def Merge_File(self, path):
         self.read_File(path)
