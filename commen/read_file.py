@@ -28,6 +28,8 @@ class ReadFile:
         if self._fileType == 'xlsx':
             self._pf = file_type.get(self._fileType, None)(self._path, dtype=str, sheet_name=self._sheet_name).fillna(
                 '')
+        elif self._fileType == 'txt':
+            self._pf = file_type.get(self._fileType, None)(self._path, dtype=str).fillna('')
         else:
             self._pf = file_type.get(self._fileType, None)(self._path, dtype=str).fillna('')
 
@@ -52,7 +54,7 @@ class ReadFile:
 
 
 if __name__ == '__main__':
-    c = ReadFile(r'Z:\数据科学平台客户数据\中国地质大学（武汉）\中国地质大学（武汉）别名表\官网别名表.csv', col=['姓名', '机构'], is_list=False)
+    c = ReadFile(r'E:\WOS\WOS所有本科高校\北方工业大学.txt', col=['姓名', '机构'], is_list=False)
     a = c.start()
     b = c.pf_sha
     print(b)
