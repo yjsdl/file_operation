@@ -14,7 +14,7 @@ file_type = {
 
 
 class ReadFile:
-    def __init__(self, path: str = None, sheet_name=None, encoding: str = 'utf-8', col: list = None,
+    def __init__(self, path: str = None, sheet_name: str = 'sheet1', encoding: str = 'utf-8', col: list = None,
                  is_list: bool = None):
         self._path = path
         self._sheet_name = sheet_name or 0
@@ -54,8 +54,8 @@ class ReadFile:
 
 
 if __name__ == '__main__':
-    c = ReadFile(r'E:\WOS\WOS所有本科高校\北方工业大学.txt', col=['姓名', '机构'], is_list=False)
+    c = ReadFile(r'E:\任务\2023-4-25\检索策略0420.csv', is_list=False)
     a = c.start()
+    a.to_csv(r'F:\mysubject\files_operation\\以前.csv', index=False, encoding='utf-8')
     b = c.pf_sha
     print(b)
-
