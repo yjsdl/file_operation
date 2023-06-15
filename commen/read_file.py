@@ -2,6 +2,7 @@
 # @date：2023/5/25 16:40
 # @Author：LiuYiJie
 # @file： read_file
+from typing import Hashable, Sequence, Literal
 
 import pandas as pd
 
@@ -33,18 +34,19 @@ class ReadFile:
         else:
             self._pf = file_type.get(self._fileType, None)(self._path, dtype=str).fillna('')
 
-    @property
-    def pf_sha(self):
-        sha = self._pf.shape[0]
-        return sha
-
     def screen_pf(self):
         self._pf = self._pf[self._col]
 
     def date_list(self):
-        self._pf = self._pf[self._col].values.tolist()
+        columns = self._pf.columns
+        _col = self._col or columns
+        self._pf = self._pf[_col].values.tolist()
 
-    def start(self):
+    def drop_Date(self, pf, subset=None, keep: str = 'first'):
+        self._pf = pf.drop_duplicates(subset=subset, keep=keep)
+        return self._pf
+
+    def start(self) -> pd.DataFrame:
         self.file_read()
         if self._col is not None:
             self.screen_pf()
@@ -57,5 +59,3 @@ if __name__ == '__main__':
     c = ReadFile(r'E:\任务\2023-4-25\检索策略0420.csv', is_list=False)
     a = c.start()
     a.to_csv(r'F:\mysubject\files_operation\\以前.csv', index=False, encoding='utf-8')
-    b = c.pf_sha
-    print(b)
