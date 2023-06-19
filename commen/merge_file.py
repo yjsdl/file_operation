@@ -40,6 +40,9 @@ class MergeFile:
                     elif src_path.endswith('html'):
                         pf = pd.read_html(src_path, dtype=str, header=0)[0]
                         self.all_list.append(pf)
+                    elif src_path.endswith('txt'):
+                        pf = pd.read_table(src_path, dtype=str)
+                        self.all_list.append(pf)
 
     def Merge_File(self, path):
         self.read_File(path)
@@ -50,5 +53,5 @@ class MergeFile:
 
 if __name__ == '__main__':
     c = MergeFile()
-    path = r'E:\任务数据\维普数据更新\东南大学'
+    path = r'E:\WOS\WOS高被引'
     c.Merge_File(path)

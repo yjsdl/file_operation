@@ -11,6 +11,16 @@ file_type = {
 }
 
 
+def xlsx2csv(path):
+    pf = ReadFile(path).start()
+    pf.to_csv(path.replace('xlsx', 'csv'), index=False, encoding='utf-8')
+
+
+def csv2xlsx(path):
+    pf = ReadFile(path).start()
+    pf.to_xlsx(path.replace('csv', 'xlsx'), index=False, encoding='utf-8')
+
+
 class SaveFile:
 
     def __init__(self, path: str = None, headers: list = None, sheet_name: str = 'sheet1'):
@@ -65,5 +75,5 @@ class SaveFile:
 
 if __name__ == '__main__':
     datas = ['3', 'a', '4', 'b']
-    c = SaveFile(path=r'F:\mysubject\files_operation\test.txt')
-    c.TxtSave(datas)
+    # c = SaveFile(path=r'F:\高校花名册\file_in\三江学院\花名册\学校别名表.xlsx')
+    xlsx2csv(path=r'F:\高校花名册\file_in\三江学院\花名册\学校别名表.csv')
