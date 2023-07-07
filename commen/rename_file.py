@@ -25,6 +25,7 @@ class RenameFile:
                 if self.is_filter_file(old_path):
                     continue
                 os.rename(old_path, new_path)
+                log.debug(f'重命名完成{old_path} --> {new_path}')
         # if self._num == self._edit_num:
         #     return '重命名完成'
         # else:

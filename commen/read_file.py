@@ -56,6 +56,7 @@ class ReadFile:
 
 
 if __name__ == '__main__':
-    c = ReadFile(r'E:\任务\2023-4-25\检索策略0420.csv', is_list=False)
+    c = ReadFile(r'F:\高校花名册\file_in\东南大学\东南大学发送\学校别名表.csv', is_list=True).start()
+    d = ReadFile(r'F:\高校花名册\file_in\东南大学\花名册\学校别名表.csv', is_list=True).start()
     a = c.start()
     a.to_csv(r'F:\mysubject\files_operation\\以前.csv', index=False, encoding='utf-8')
