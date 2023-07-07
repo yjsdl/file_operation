@@ -8,7 +8,7 @@ import shutil
 
 class CopyFile:
 
-    def __init__(self, src_path: str = None, dest_path: str = None):
+    def __init__(self, src_path: str = None, dest_path: str = None, exclude_file: list = None):
         self._src_path = src_path
         self._dest_path = dest_path
 
@@ -21,8 +21,6 @@ class CopyFile:
         if not os.path.exists(os.path.dirname(self._dest_path)):
             os.makedirs(os.path.dirname(self._dest_path))
         shutil.copyfile(self._src_path, self._dest_path)
-
-
 
     # 复制文件
     def copy_file(self, src, dest):
@@ -56,7 +54,8 @@ class CopyFile:
 
 
 if __name__ == '__main__':
-    c = CopyFile(src_path=r'E:\任务数据\学科clc\F239 审计.csv', dest_path=r'G:\任务数据\EITest\test.csv')
+    exclude_file = []
+    c = CopyFile(src_path=r'E:\任务数据\学科clc\F239 审计.csv', dest_path=r'G:\任务数据\EITest\test.csv', exclude_file=exclude_file)
     # src_path = r'E:\任务数据\EI'
     # dest_path = r'G:\任务数据\EITest'
     # shutil.copytree(src_path, dest_path)
