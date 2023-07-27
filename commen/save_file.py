@@ -18,7 +18,7 @@ def xlsx2csv(path):
 
 def csv2xlsx(path):
     pf = ReadFile(path).start()
-    pf.to_xlsx(path.replace('csv', 'xlsx'), index=False, encoding='utf-8')
+    pf.to_excel(path.replace('csv', 'xlsx'), index=False, encoding='utf-8')
 
 
 class SaveFile:
@@ -76,4 +76,5 @@ class SaveFile:
 if __name__ == '__main__':
     datas = ['3', 'a', '4', 'b']
     # c = SaveFile(path=r'F:\高校花名册\file_in\三江学院\花名册\学校别名表.xlsx')
-    xlsx2csv(path=r'F:\高校花名册\file_in\三江学院\花名册\学校别名表.csv')
+    xlsx2csv(path=r'F:\mysubject\files_operation\西安电子科技大学\学校别名表_邮箱.xlsx')
+    # csv2xlsx(path=r'F:\高校花名册\file_in\上海交通大学\花名册\学校别名表_邮箱.csv')
