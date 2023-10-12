@@ -11,6 +11,7 @@ file_type = {
     'xlsx': pd.read_excel,
     'txt': pd.read_table,
     'html': pd.read_html,
+    'xls': pd.read_excel
 }
 
 
@@ -27,13 +28,16 @@ class ReadFile:
         self._is_list = is_list
 
     def file_read(self):
-        if self._fileType == 'xlsx':
-            self._pf = file_type.get(self._fileType, None)(self._path, dtype=str, sheet_name=self._sheet_name).fillna(
-                '')
-        elif self._fileType == 'txt':
-            self._pf = file_type.get(self._fileType, None)(self._path, dtype=str).fillna('')
-        else:
-            self._pf = file_type.get(self._fileType, None)(self._path, dtype=str).fillna('')
+        try:
+            if self._fileType == 'xlsx':
+                self._pf = file_type.get(self._fileType, None)(self._path, dtype=str, sheet_name=self._sheet_name).fillna(
+                    '')
+            elif self._fileType == 'html':
+                self._pf = file_type.get(self._fileType, None)(self._path, dtype=str, header=0)[0].fillna('')
+            else:
+                self._pf = file_type.get(self._fileType, None)(self._path, dtype=str).fillna('')
+        except:
+            pass
 
     def screen_pf(self):
         pf = self._pf[self._col]
@@ -59,7 +63,7 @@ class ReadFile:
 
 
 if __name__ == '__main__':
-    c = ReadFile(r'F:\mysubject\files_operation\上海交通大学花名册\校内部门代码.xlsx', is_list=False).start()
+    c = ReadFile(r'Z:\客户数据存储\专利\西安电子科技大学\xlsx\西电专利.csv', is_list=False).start()
     # d = ReadFile(r'F:\高校花名册\file_in\东南大学\花名册\学校别名表.csv', is_list=True).start()
     # a = c.start()
     c.to_csv(r'F:\mysubject\files_operation\上海交通大学花名册\校内部门代码.csv', index=False, encoding='utf-8')

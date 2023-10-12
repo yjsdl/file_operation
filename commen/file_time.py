@@ -37,5 +37,5 @@ def FileTime(path):
 
 
 if __name__ == '__main__':
-    path = r'Z:\需求文档\代码\science-data-upload\science_data_upload\_base\school_sid.json'
+    path = r'F:\高校花名册\file_in\河北工业大学\花名册\官网别名表.csv'
     FileTime(path)
