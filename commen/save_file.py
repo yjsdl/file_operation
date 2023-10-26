@@ -76,5 +76,5 @@ class SaveFile:
 if __name__ == '__main__':
     datas = ['3', 'a', '4', 'b']
     # c = SaveFile(path=r'F:\高校花名册\file_in\三江学院\花名册\学校别名表.xlsx')
-    xlsx2csv(path=r'F:\期刊中图分类号学科\ZH_clc_sub\中分表.xlsx')
+    xlsx2csv(path=r'F:\高校花名册\file_in\清华大学\花名册\官网别名表测试.xlsx')
     # csv2xlsx(path=r'F:\高校花名册\file_in\上海交通大学\花名册\学校别名表_邮箱.csv')

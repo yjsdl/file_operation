@@ -53,14 +53,14 @@ class MergeFile:
                 continue
             for file in files:
                 # 排除压缩文件
-                if not file.endswith('.txt'):
-                    continue
+                # if not file.endswith('.zip'):
+                #     continue
                 file_path = os.path.join(root, file)
                 print(file_path)
                 data = ReadFile(path=file_path).start()
                 self.all_list.append(data)
 
-    @abc.abstractmethod
+    # @abc.abstractmethod
     def is_filter_file(self, root) -> bool:
         #   对文件进行删选
         return False
@@ -69,11 +69,14 @@ class MergeFile:
         self.read_File(path)
         pf = pd.concat(self.all_list)
         return pf
-        # dest_path = os.path.join(path, '结果文件.csv')
-        # pf.to_csv(dest_path, index=False, encoding='utf-8')
 
+    def get_all_file(self, path):
+        self.read_File(path)
+        pf = pd.concat(self.all_list)
+        dest_path = os.path.join(path, '结果文件.csv')
+        pf.to_csv(dest_path, index=False, encoding='utf-8')
 
 if __name__ == '__main__':
     c = MergeFile()
-    path = r'Z:\客户数据存储\WOS\河海大学'
-    c.Merge_File(path)
+    path = r'F:\蟹联网淘宝京东\2023\file_in'
+    c.get_all_file(path)
