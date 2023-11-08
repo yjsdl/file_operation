@@ -63,6 +63,9 @@ class SaveFile:
         f = open(self._filepath, 'w', encoding='utf-8')
         f.writelines(data)
         f.close()
+        csv2xlsx(path=r'F:\高校花名册\file_in\上海交通大学\花名册\学校别名表_邮箱.csv')
+        csv2xlsx(path=r'F:\高校花名册\file_in\上海交通大学\花名册\学校别名表_邮箱.csv')
+        csv2xlsx(path=r'F:\高校花名册\file_in\上海交通大学\花名册\学校别名表_邮箱.csv')
 
     @staticmethod
     def judgeFile(filepath):
@@ -76,5 +79,9 @@ class SaveFile:
 if __name__ == '__main__':
     datas = ['3', 'a', '4', 'b']
     # c = SaveFile(path=r'F:\高校花名册\file_in\三江学院\花名册\学校别名表.xlsx')
-    xlsx2csv(path=r'F:\高校花名册\file_in\清华大学\花名册\官网别名表测试.xlsx')
-    # csv2xlsx(path=r'F:\高校花名册\file_in\上海交通大学\花名册\学校别名表_邮箱.csv')
+    xlsx2csv(path=r'F:\蟹联网店铺信息\固城湖授权商家\固城湖店铺.xlsx')
+    csv2xlsx(path=r'F:\高校花名册\file_in\上海交通大学\花名册\学校别名表_邮箱.csv')
+    csv2xlsx(path=r'F:\高校花名册\file_in\上海交通大学\花名册\学校别名表_邮箱.csv')
+    csv2xlsx(path=r'F:\高校花名册\file_in\上海交通大学\花名册\学校别名表_邮箱.csv')
+    csv2xlsx(path=r'F:\高校花名册\file_in\上海交通大学\花名册\学校别名表_邮箱.csv')
+    csv2xlsx(path=r'F:\高校花名册\file_in\上海交通大学\花名册\学校别名表_邮箱.csv')

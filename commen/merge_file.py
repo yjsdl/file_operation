@@ -58,6 +58,7 @@ class MergeFile:
                 file_path = os.path.join(root, file)
                 print(file_path)
                 data = ReadFile(path=file_path).start()
+                print(data.columns)
                 self.all_list.append(data)
 
     # @abc.abstractmethod
@@ -73,10 +74,10 @@ class MergeFile:
     def get_all_file(self, path):
         self.read_File(path)
         pf = pd.concat(self.all_list)
-        dest_path = os.path.join(path, '结果文件.csv')
+        dest_path = os.path.join(path.rsplit('\\', 1)[0], '结果文件.csv')
         pf.to_csv(dest_path, index=False, encoding='utf-8')
 
 if __name__ == '__main__':
     c = MergeFile()
-    path = r'F:\蟹联网淘宝京东\2023\file_in'
+    path = r'F:\蟹联网淘宝京东\2023\file_in\京东'
     c.get_all_file(path)
