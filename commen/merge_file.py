@@ -6,45 +6,18 @@ import abc
 import os
 import re
 import pandas as pd
+from typing import Optional
 from commen.read_file import ReadFile
+from commen.logger_code.stream_handler import log
+logging = log()
 
 
 class MergeFile:
     all_list = list()
     table_head = []
 
-    # def read_File(self, path):
-    #     if os.path.isdir(path):
-    #         twoFiles = os.listdir(path)
-    #         for file in twoFiles:
-    #             src_path = os.path.join(path, file)
-    #             print(src_path)
-    #             if os.path.isdir(src_path):
-    #                 self.read_File(src_path)
-    #             else:
-    #                 if src_path.endswith('csv'):
-    #                     pf = pd.read_csv(src_path, dtype=str).fillna('')
-    #                     self.all_list.append(pf)
-    #                 elif src_path.endswith('xlsx'):
-    #                     pf = pd.read_excel(src_path, sheet_name=0, dtype=str).fillna('')
-    #                     self.all_list.append(pf)
-    #                 elif src_path.endswith('xls'):
-    #                     with open(src_path, 'r', encoding='utf-8') as f:
-    #                         data = f.read()
-    #                         rows = re.findall(r'<Row ss:AutoFitHeight=\'1\'>(.*?)</Row>', data)
-    #                         items = list()
-    #                         for row in rows:
-    #                             item = re.findall(r'<Data ss:Type=\'String\'>(.*?)</Data>', row)
-    #                             item = dict(zip(self.table_head, item))
-    #                             items.append(item)
-    #                         pf = pd.DataFrame(data=items, columns=self.table_head)
-    #                         self.all_list.append(pf)
-    #                 elif src_path.endswith('html'):
-    #                     pf = pd.read_html(src_path, dtype=str, header=0)[0].fillna('')
-    #                     self.all_list.append(pf)
-    #                 elif src_path.endswith('txt'):
-    #                     pf = pd.read_table(src_path, dtype=str).fillna('')
-    #                     self.all_list.append(pf)
+    def __init__(self, col: Optional[list] = None):
+        self._col = col
 
     def read_File(self, path):
         for root, dirs, files in os.walk(path):
@@ -57,11 +30,11 @@ class MergeFile:
                 #     continue
                 file_path = os.path.join(root, file)
                 print(file_path)
-                data = ReadFile(path=file_path).start()
+                data = ReadFile(path=file_path, col=self._col).start()
                 print(data.columns)
                 self.all_list.append(data)
 
-    # @abc.abstractmethod
+    @abc.abstractmethod
     def is_filter_file(self, root) -> bool:
         #   对文件进行删选
         return False
@@ -78,6 +51,6 @@ class MergeFile:
         pf.to_csv(dest_path, index=False, encoding='utf-8')
 
 if __name__ == '__main__':
-    c = MergeFile()
-    path = r'F:\蟹联网淘宝京东\2023\file_in\京东'
+    c = MergeFile(col=['C1', 'RP'])
+    path = r'Z:\客户数据存储\WOS\中国地质大学\OG=(China University of Geosciences) AND (PY==(2019))'
     c.get_all_file(path)
