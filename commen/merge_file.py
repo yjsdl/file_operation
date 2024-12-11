@@ -51,6 +51,6 @@ class MergeFile:
         pf.to_csv(dest_path, index=False, encoding='utf-8')
 
 if __name__ == '__main__':
-    c = MergeFile(col=['C1', 'RP'])
-    path = r'Z:\客户数据存储\WOS\中国地质大学\OG=(China University of Geosciences) AND (PY==(2019))'
+    c = MergeFile()
+    path = r'Y:\weipu-metadata\journal_article\公共卫生与预防医学'
     c.get_all_file(path)

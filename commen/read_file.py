@@ -63,7 +63,7 @@ class ReadFile:
 
 
 if __name__ == '__main__':
-    c = ReadFile(r'E:\任务数据\爱学术\all.csv', is_list=False).start()
+    c = ReadFile(r'Y:\weipu-metadata\weipu_one_school\东南大学2023-2023中文发文.csv', is_list=False).start()
     # d = ReadFile(r'F:\高校花名册\file_in\东南大学\花名册\学校别名表.csv', is_list=True).start()
     # a = c.start()
-    # c.to_csv(r'F:\mysubject\files_operation\上海交通大学花名册\校内部门代码.csv', index=False, encoding='utf-8')
+    c.to_csv(r'F:\mysubject\files_operation\上海交通大学花名册\校内部门代码.csv', index=False, encoding='utf-8')

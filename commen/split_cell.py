@@ -12,5 +12,5 @@ def splitCell(path):
     pf1.to_csv(path.replace('.csv', '拆分后.csv'), index=False, encoding='utf-8')
 
 if __name__ == '__main__':
-    path = r'F:\高校花名册\file_in\西安电子科技大学\花名册\学校别名表_before.csv'
+    path = r'Z:\客户数据存储\CQVIP\上海交通大学\上海交通大学2009-2009中文发文.csv'
     splitCell(path)
